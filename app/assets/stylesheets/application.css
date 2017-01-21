@@ -65,6 +65,11 @@
  .books-show-left{
  	float: left;
  	width: 30%;
+ 	object-fit: fill;
+ }
+
+ .books-show-left img{
+ 	height: 100%;
  }
 
  .books-show-right{
