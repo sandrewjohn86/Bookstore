@@ -1,2 +1,22 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div id="books-show">
+	<h2>Ruby On Rails Power</h2>
+	<div class="books-show-left">
+		<%= image_tag('covers/ruby_on_rails_power.jpg') %>
+	</div>
+	<div class="books-show-right">
+		<h3>Book Info</h3>
+		<ul>
+			<li><strong>Category: </strong>Ruby On Rails</li>
+			<li><strong>Author: </strong> Aneesha Bakharia</li>
+			<li><strong>Publisher: </strong> Course Technology PTR</li>
+			<li><strong>Year: </strong> 2007</li>
+			<li><strong>ISBN: </strong> 1598632167</li>
+			<li><strong>Format: </strong> Paperback</li>
+			<li><strong>Pages: </strong> 678</li>
+		</ul>
+		<%= link_to "Buy For $5.47", 'https://www.amazon.com/Ruby-Rails-Power-Comprehensive-2007-04-17/dp/B01F7Y8F4G/ref=sr_1_3?ie=UTF8&qid=1484940472&sr=8-3&keywords=ruby+on+rails+power', class: 'btn btn-success', target:'_blank' %>
+	</div>
+	<div class="clearfix"></div>
+	<h4>Excerpt</h4>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus at accumsan felis. Suspendisse euismod placerat lacus a fringilla. Nulla molestie pulvinar arcu, vitae ultrices mi dignissim sit amet. Nunc quis felis libero. Aenean consectetur enim a neque euismod, et bibendum diam convallis. Integer convallis tempor suscipit. Vestibulum vestibulum mi eget ante dapibus luctus. Quisque eget euismod tellus. Nullam imperdiet nunc in elementum molestie. Donec non quam dapibus, pulvinar purus non, vulputate mauris.</p>
+</div>
