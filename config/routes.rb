@@ -1,4 +1,97 @@
 Rails.application.routes.draw do
+  
+  namespace :admin do
+  get 'login' => 'sessions#new', :as => 'login'
+  end
+
+  namespace :admin do
+  get 'logout' => 'sessions#destroy', :as => 'logout'
+  end
+
+  namespace :admin do
+  get 'sessions/create'
+  end
+
+  namespace :admin do
+  get 'users/new'
+  end
+
+  namespace :admin do
+  get 'users/create'
+  end
+
+  namespace :admin do
+  get 'users/edit'
+  end
+
+  namespace :admin do
+  get 'users/update'
+  end
+
+  namespace :admin do
+  get 'users/destroy'
+  end
+
+  namespace :admin do
+  get 'users/index'
+  end
+
+  namespace :admin do
+  get 'users/show'
+  end
+
+  namespace :admin do
+  get 'publishers/new'
+  end
+
+  namespace :admin do
+  get 'publishers/edit'
+  end
+
+  namespace :admin do
+  get 'publishers/index'
+  end
+
+  namespace :admin do
+  get 'categories/new'
+  end
+
+  namespace :admin do
+  get 'categories/edit'
+  end
+
+  namespace :admin do
+  get 'categories/index'
+  end
+
+  namespace :admin do
+  get 'categories/show'
+  end
+
+  namespace :admin do
+  get 'books/new'
+  end
+
+  namespace :admin do
+  get 'books/edit'
+  end
+
+  namespace :admin do
+  get 'books/index'
+  end
+
+  namespace :admin do
+  get 'authors/new'
+  end
+
+  namespace :admin do
+  get 'authors/edit'
+  end
+
+  namespace :admin do
+  get 'authors/index'
+  end
+
   get 'publishers/new'
 
   get 'publishers/create'
@@ -55,7 +148,7 @@ Rails.application.routes.draw do
 
   get 'books/show'
 
-  get 'about/index'
+  get 'about' => 'about#index'
 
   get 'about' => 'about#index'
 
@@ -74,10 +167,11 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :books
-  resources :categories
-  resources :authors
-  resources :publishers
+  resources :books, :categories, :authors, :publishers
+
+  namespace :admin do
+    resources :books, :categories, :authors, :publishers, :users, :sessions
+  end
 
   # Example resource route with options:
   #   resources :products do

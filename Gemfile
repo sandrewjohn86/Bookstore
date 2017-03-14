@@ -26,13 +26,19 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt-ruby', :require => 'bcrypt'
+gem 'bootstrap-sass'
+gem 'will_paginate', '~> 3.0'
+gem "paperclip", "~> 5.0.0"
+gem "wysiwyg-rails"
+gem "font-awesome-rails"
 
 # Use Unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -46,6 +52,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'mysql2'
+  gem 'better_errors'
 end
 
 group :production do

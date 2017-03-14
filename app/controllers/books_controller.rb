@@ -40,8 +40,14 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
-    @categories = Category.all
+    if params[:search]
+      @books = Book.search(params[:search]).all.paginate(:per_page => 10, :page => params[:page])
+      @categories = Category.all
+    else
+      @books = Book.all.paginate(:per_page => 10, :page => params[:page])
+      @categories = Category.all
+
+    end
   end
 
   def show
@@ -51,6 +57,6 @@ class BooksController < ApplicationController
 
   private
     def book_params
-      params.require(:book).permit(:title, :category_id, :author_id, :publisher_id, :isbn, :price, :buy, :format, :excerpt, :pages, :year, :coverpath)
+      params.require(:book).permit(:title, :category_id, :author_id, :publisher_id, :isbn, :price, :buy, :format, :excerpt, :pages, :year, :coverpath, :image)
     end
 end
