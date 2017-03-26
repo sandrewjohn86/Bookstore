@@ -1,4 +1,4 @@
-<h2 class="page-header">Users <%=link_to "Create New", new_admin_user_path, class: 'btn btn-primary pull-right' %></h2>
+<h2>Users <%=link_to "Create New", new_admin_user_path, class: 'btn btn-success pull-right' %></h2>
 <% if @users.exists? %>
 	<table class="table table-striped">
 		<tr>
@@ -13,10 +13,17 @@
 				<td><%= user.name %></td>
 				<td><%= user.email %></td>
 				<td><%= user.created_at.to_time.strftime('%B %e at %l:%M %p') %></td>
-				<td><%= link_to 'Edit', edit_admin_user_path(user.id) %> | <%= link_to 'Delete', admin_user_path(user), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+				<td>
+					<% if policy(:user).edit? %>
+						<%= link_to 'Edit', edit_admin_user_path(user.id) %> | <%= link_to 'Delete', admin_user_path(user), method: :delete, data: {confirm: 'Are you sure?'} %>
+					<% else %>
+						Unauthorized	
+					<% end %>
+				</td>
 			</tr>
 		<% end %>
 	</table>
+	<%= will_paginate @users %>
 <% else %>
 	<p>There are no users</p>
 <%end%>

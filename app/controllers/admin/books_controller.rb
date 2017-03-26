@@ -3,7 +3,7 @@ class Admin::BooksController < Admin::ApplicationController
   
   def new
     @page_title = "Add New Book"
-    @book = Book.new
+    authorize @book = Book.new
     @category = Category.new
     @author = Author.new
     @publisher = Publisher.new
@@ -39,11 +39,11 @@ class Admin::BooksController < Admin::ApplicationController
   end
 
   def edit
-    @book = Book.find(params[:id])
+    authorize @book = Book.find(params[:id])
   end
 
   def destroy
-    @book = Book.find(params[:id])
+    authorize @book = Book.find(params[:id])
 
     @book.destroy
 

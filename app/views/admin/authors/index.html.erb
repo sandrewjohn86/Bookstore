@@ -1,15 +1,25 @@
-<h2>Authors</h2>
-
-<table class="table table-striped">
-	<tr>
-		<th>Author Name</th>
-		<th>Actions</th>
-	</tr>
-
-	<% @authors.each do |author| %>
+<h2>Authors <%= link_to "Create New", new_admin_author_path, class: 'btn btn-success pull-right' %></h2>
+<% if @authors.exists? %>
+	<table class="table table-striped">
 		<tr>
-			<td><%= author.first_name %> <%= author.last_name %></td>
-			<td><%= link_to 'Edit', edit_author_path(author.id) %> | <%= link_to 'Delete', author_path(author), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+			<th>Author Name</th>
+			<th>Actions</th>
 		</tr>
-	<% end %>
-</table>
+
+		<% @authors.each do |author| %>
+			<tr>
+				<td><%= author.first_name %> <%= author.last_name %></td>
+				<td>
+					<% if policy(:author).edit? %>
+						<%= link_to 'Edit', edit_author_path(author.id) %> | <%= link_to 'Delete', author_path(author), method: :delete, data: {confirm: 'Are you sure?'} %>
+					<% else %>
+						Unauthorized
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate @authors %>
+<% else %>
+  <p>There are no authors</p>
+<% end %>

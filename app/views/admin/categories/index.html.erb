@@ -1,15 +1,25 @@
-<h2 class="page-header">Categories <%= link_to "Create New", new_admin_category_path, class: 'btn btn-primary pull-right'%></h2>
-
-<table class="table table-striped">
-	<tr>
-		<th>Category Name</th>
-		<th>Actions</th>
-	</tr>
-
-	<% @categories.each do |category| %>
+<h2>Categories <%= link_to "Create New", new_admin_category_path, class: 'btn btn-success pull-right'%></h2>
+<% if @categories.exists? %>
+	<table class="table table-striped">
 		<tr>
-			<td><%= category.name %></td>
-			<td><%= link_to 'Edit', edit_admin_category_path(category.id) %> | <%= link_to 'Delete', admin_category_path(category), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+			<th>Category Name</th>
+			<th>Actions</th>
 		</tr>
-	<% end %>
-</table>
+
+		<% @categories.each do |category| %>
+			<tr>
+				<td><%= category.name %></td>
+				<td>
+					<% if policy(:category).edit? %>
+						<%= link_to 'Edit', edit_admin_category_path(category.id) %> | <%= link_to 'Delete', admin_category_path(category), method: :delete, data: {confirm: 'Are you sure?'} %>
+					<% else %>
+						Unauthorized	
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate @categories %>
+<% else %>
+  <p>There are no categories</p>
+<% end %>

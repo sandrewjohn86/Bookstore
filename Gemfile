@@ -32,6 +32,7 @@ gem 'will_paginate', '~> 3.0'
 gem "paperclip", "~> 5.0.0"
 gem "wysiwyg-rails"
 gem "font-awesome-rails"
+gem "pundit"
 
 # Use Unicorn as the app server
 # gem 'unicorn'

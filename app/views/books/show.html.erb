@@ -4,8 +4,8 @@
 		<%= image_tag @book.image.url,width:'100%' %>
 	</div>
 
-	<div class="books-show-right">
-		<h3>Book Info</h3>
+	<div class="books-show-right col-md-3 col-sm-3">
+		<h3>Book Info:</h3>
 		<ul>
 			<li><strong>Category: </strong> <%= @book.category.name %></li>
 			<li><strong>Author: </strong> <%= @book.author.first_name %> <%= @book.author.last_name %></li>
@@ -22,7 +22,4 @@
 
 	<h4>Excerpt</h4>
 	<p><%= @book.excerpt %></p>
-
-	<h3>Admin Function</h3>
-	<%= link_to 'Edit', edit_book_path(@book.id) %> | <%= link_to 'Delete', book_path(@book), method: :delete, data: {confirm: 'Are you sure?'} %>
 </div>

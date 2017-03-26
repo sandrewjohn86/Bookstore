@@ -3,7 +3,7 @@ class Admin::UsersController < Admin::ApplicationController
   
   def new
     @page_title = "Add New User"
-    @user = User.new
+    authorize @user = User.new
   end
 
   def create
@@ -27,11 +27,11 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    authorize @user = User.find(params[:id])
   end
 
   def destroy
-    @user = User.find(params[:id])
+    authorize @user = User.find(params[:id])
 
     @user.destroy
 
@@ -41,13 +41,12 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = User.all.paginate(:per_page => 10, :page => params[:page])
   end
 
   def show
     @user = User.find(params[:id])
     @users = User.all
-    #@books = @user.books
   end
 
   private

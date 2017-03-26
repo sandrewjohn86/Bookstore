@@ -2,20 +2,24 @@
 	<div class="well">
 		<h3>Location Info</h3>
 		<ul>
-			<li>The BookStore</li>
-			<li>499 Massachusetts Ave, Unit 2</li>
-			<li>Boston, MA 02110</li>
-			<li>Phone: (617) 555-5555</li>
-			<li>Email: support@thebookstore.com</li>
+			<li>The BookShelf</li>
+			<li>Belmont, St.George's</li>
+			<li>Grenada</li>
+			<li>Phone: (473) 403-5618</li>
+			<li>Email: stephenj.me@gmail.com</li>
 		</ul>
 	</div>
 <% end %>
 
 <% if params[:controller] == 'books' && params[:action] == 'index' || params[:action] == 'show' %>
 	<div class="list-group">
-
-		<% @categories.each do |category| %>
-			<%= link_to category.name, category_path(category.id), class: 'list-group-item' %>
-		<% end %>
+		<ul class="pagination">
+			<h4>Filter By Category</h4>
+			<% @categories.each do |category| %>
+				<li>
+					<%= link_to category.name, category_path(category.id), class: 'list-group-item' %>
+				</li>
+			<% end %>
+		</ul>
 	</div>
 <% end %>

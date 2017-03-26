@@ -1,8 +1,9 @@
 class Admin::PublishersController < Admin::ApplicationController
   before_filter :verify_logged_in
+
   def new
     @page_title = "Add New Publisher"
-    @publisher = Publisher.new
+    authorize @publisher = Publisher.new
   end
 
   def create
@@ -26,11 +27,11 @@ class Admin::PublishersController < Admin::ApplicationController
   end
 
   def edit
-    @publisher = Publisher.find(params[:id])
+    authorize @publisher = Publisher.find(params[:id])
   end
 
   def destroy
-    @publisher = Publisher.find(params[:id])
+    authorize @publisher = Publisher.find(params[:id])
 
     @publisher.destroy
 
@@ -40,7 +41,7 @@ class Admin::PublishersController < Admin::ApplicationController
   end
 
   def index
-    @publishers = Publisher.all
+    @publishers = Publisher.all.paginate(:per_page => 10, :page => params[:page])
   end
 
   private

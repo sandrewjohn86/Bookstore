@@ -5,7 +5,7 @@
       <th>Title</th>
       <th>ISBN</th>
       <th>Year</th>
-      <th></th>
+      <th>Actions</th>
     </tr>
 
     <% @books.each do |book| %>
@@ -13,7 +13,13 @@
         <td><%= book.title %></td>
         <td><%= book.isbn %></td>
         <td><%= book.year %></td>
-        <td><%= link_to 'Edit', edit_admin_book_path(book.id) %> | <%= link_to 'Delete', admin_book_path(book), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <td>
+          <% if policy(:book).edit? %>
+            <%= link_to 'Edit', edit_admin_book_path(book.id) %> | <%= link_to 'Delete', admin_book_path(book), method: :delete, data: {confirm: 'Are you sure?'} %>
+          <% else %>
+            Unauthorized
+          <% end %>
+        </td> 
       </tr>
     <% end %>
   </table>

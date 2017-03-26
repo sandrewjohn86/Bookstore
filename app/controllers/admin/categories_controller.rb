@@ -3,7 +3,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   
   def new
     @page_title = "Add New Category"
-    @category = Category.new
+    authorize @category = Category.new
   end
 
   def create
@@ -27,11 +27,11 @@ class Admin::CategoriesController < Admin::ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    authorize @category = Category.find(params[:id])
   end
 
   def destroy
-    @category = Category.find(params[:id])
+    authorize @category = Category.find(params[:id])
 
     @category.destroy
 
@@ -41,7 +41,7 @@ class Admin::CategoriesController < Admin::ApplicationController
   end
 
   def index
-    @categories = Category.all
+    @categories = Category.all.paginate(:per_page => 10, :page => params[:page])
   end
 
   def show

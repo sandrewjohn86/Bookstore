@@ -1,8 +1,9 @@
 class Admin::AuthorsController < Admin::ApplicationController
   before_filter :verify_logged_in
+  
   def new
     @page_title = "Add New Author"
-    @author = Author.new
+    authorize @author = Author.new
   end
 
   def create
@@ -26,11 +27,11 @@ class Admin::AuthorsController < Admin::ApplicationController
   end
 
   def edit
-    @author = Author.find(params[:id])
+    authorize @author = Author.find(params[:id])
   end
 
   def destroy
-    @author = Author.find(params[:id])
+    authorize @author = Author.find(params[:id])
 
     @author.destroy
 
@@ -40,7 +41,7 @@ class Admin::AuthorsController < Admin::ApplicationController
   end
 
   def index
-    @authors = Author.all
+    @authors = Author.all.paginate(:per_page => 10, :page => params[:page])
   end
 
   private

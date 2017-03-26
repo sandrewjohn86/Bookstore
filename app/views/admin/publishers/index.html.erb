@@ -1,15 +1,25 @@
-<h2>Publishers</h2>
-
-<table class="table table-striped">
-	<tr>
-		<th>Publisher Name</th>
-		<th>Actions</th>
-	</tr>
-
-	<% @publishers.each do |publisher| %>
+<h2>Publishers <%= link_to "Create New", new_admin_publisher_path, class: 'btn btn-success pull-right'%></h2>
+<% if @publishers.exists? %>
+	<table class="table table-striped">
 		<tr>
-			<td><%= publisher.name %></td>
-			<td><%= link_to 'Edit', edit_publisher_path(publisher.id) %> | <%= link_to 'Delete', publisher_path(publisher), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+			<th>Publisher Name</th>
+			<th>Actions</th>
 		</tr>
-	<% end %>
-</table>
+
+		<% @publishers.each do |publisher| %>
+			<tr>
+				<td><%= publisher.name %></td>
+				<td>
+					<% if policy(:publisher).edit? %>
+						<%= link_to 'Edit', edit_admin_publisher_path(publisher.id) %> | <%= link_to 'Delete', publisher_path(publisher), method: :delete, data: {confirm: 'Are you sure?'} %>
+					<% else %>
+						Unauthorized	
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</table>
+	<%= will_paginate @publishers %>
+<% else %>
+  <p>There are no publishers</p>
+<% end %>
