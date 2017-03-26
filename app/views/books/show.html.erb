@@ -15,7 +15,7 @@
 			<li><strong>Format: </strong> <%= @book.format %></li>
 			<li><strong>Pages: </strong> <%= @book.pages %></li>
 		</ul>
-		<%= link_to "Buy For: " + @book.price, @book.buy, class: 'btn btn-success', target:'_blank' %>
+		<%= link_to "Buy For: $" + @book.price, @book.buy, class: 'btn btn-success', target:'_blank' %>
 	</div>
 
 	<div class="clearfix"></div>
