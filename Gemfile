@@ -30,6 +30,7 @@ gem 'bcrypt-ruby', :require => 'bcrypt'
 gem 'bootstrap-sass'
 gem 'will_paginate', '~> 3.0'
 gem "paperclip", "~> 5.0.0"
+gem "aws-sdk", "~> 2.3"
 gem "wysiwyg-rails"
 gem "font-awesome-rails"
 gem "pundit"
