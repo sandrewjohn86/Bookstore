@@ -1,6 +1,6 @@
 <h2>Edit Publisher</h2>
 
-<%= form_for @publisher do |f| %>
+<%= form_for [:admin, @publisher] do |f| %>
 	<!-- check for errors -->
 	<% if @publisher.errors.any? %>
 		<% @publisher.errors.full_messages.each do |msg| %>

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  resources :books, :categories
+
+  namespace :admin do
+    resources :books, :categories, :authors, :publishers, :users, :sessions
+  end
   
   namespace :admin do
   get 'login' => 'sessions#new', :as => 'login'
@@ -117,11 +123,7 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
-  resources :books, :categories
 
-  namespace :admin do
-    resources :books, :categories, :authors, :publishers, :users, :sessions
-  end
 
   # Example resource route with options:
   #   resources :products do
