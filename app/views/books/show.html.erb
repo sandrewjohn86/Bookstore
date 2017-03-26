@@ -1,11 +1,11 @@
 <div id="books-show">
-	<h2><%= @book.title %></h2>
+	<h3><%= @book.title %></h3>
 	<div class="books-show-left">
 		<%= image_tag @book.image.url,width:'100%' %>
 	</div>
 
 	<div class="books-show-right col-md-3 col-sm-3">
-		<h3>Book Info:</h3>
+		<h4>Book Info:</h4>
 		<ul>
 			<li><strong>Category: </strong> <%= @book.category.name %></li>
 			<li><strong>Author: </strong> <%= @book.author.first_name %> <%= @book.author.last_name %></li>

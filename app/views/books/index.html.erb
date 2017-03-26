@@ -3,7 +3,6 @@
 		<div class="row">
 			<% book.each do |book| %>
 				<div class="col-md-3 col-sm-3">
-					<h3><%= book.title %></h3>
 					<div class="clearfix"></div>
 					<%= image_tag book.image.url, height:'225', class: "thumbnail" %>
 					<%=link_to 'Read More', book_path(book), class: "btn btn-primary" %>
