@@ -11,7 +11,7 @@
 				<td><%= author.first_name %> <%= author.last_name %></td>
 				<td>
 					<% if policy(:author).edit? %>
-						<%= link_to 'Edit', edit_author_path(author.id) %> | <%= link_to 'Delete', author_path(author), method: :delete, data: {confirm: 'Are you sure?'} %>
+						<%= link_to 'Edit', edit_admin_author_path(author.id) %> | <%= link_to 'Delete', admin_author_path(author), method: :delete, data: {confirm: 'Are you sure?'} %>
 					<% else %>
 						Unauthorized
 					<% end %>
