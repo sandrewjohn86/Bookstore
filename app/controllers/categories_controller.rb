@@ -40,6 +40,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    @books = Category.all.paginate(:per_page => 10, :page => params[:page])
   end
 
   def show

@@ -1,15 +1,15 @@
-<h2>Categories</h2>
-
-<table class="table table-striped">
-	<tr>
-		<th>Category Name</th>
-		<th>Actions</th>
-	</tr>
-
-	<% @categories.each do |category| %>
-		<tr>
-			<td><%= category.name %></td>
-			<td><%= link_to 'Edit', edit_category_path(category.id) %> | <%= link_to 'Delete', category_path(category), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-		</tr>
+<div id="books-index">
+	<% @books.each_slice(4) do |book| %>
+		<div class="row">
+			<% book.each do |book| %>
+				<div class="col-md-3 col-sm-3 index-books">
+					<div class="clearfix"></div>
+					<%= image_tag book.image.url, :size => "100x225", class: "thumbnail" %>
+					<%=link_to 'Read More', book_path(book), class: "btn btn-primary" %>
+					<div class="clearfix"></div>
+				</div>
+			<% end %>
+		</div>
 	<% end %>
-</table>
+	<%= will_paginate @books %>
+</div>
